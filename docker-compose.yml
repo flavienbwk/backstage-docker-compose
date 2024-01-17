@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  backstage:
+    build: .
+    ports:
+      - 7007:7007
+    volumes:
+      - ./app-config.yaml:/app/app-config.yaml
+      - ./catalog-info.yaml:/app/catalog-info.yaml
+
+  postgres:
+    image: postgres:12
+    environment:
+      POSTGRES_USER: backstage
+      POSTGRES_PASSWORD: backstage 
+    volumes:
+      - backstage_pgdata:/var/lib/postgresql/data
+
+volumes:
+  backstage_pgdata:
