@@ -1,0 +1,9 @@
+#!/usr/bin/expect
+
+set timeout -1
+spawn npx @backstage/create-app@$env(BACKSTAGE_VERSION) --path /app
+expect "Ok to proceed"
+send "\r"
+expect "Enter a name for the app"
+send "backstage\r"
+expect eof

@@ -9,5 +9,8 @@ RUN apk update && \
 # Install musl
 RUN apk add --no-cache musl-dev libc-dev
 
-COPY ./entrypoint.sh /entrypoint.sh
+COPY ./build.exp /build.exp
+RUN chmod +x /build.exp
+
+COPY ./build.entrypoint.sh /entrypoint.sh
 ENTRYPOINT [ "/entrypoint.sh" ]

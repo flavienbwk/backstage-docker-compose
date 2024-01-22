@@ -1,19 +1,34 @@
 version: '3'
+
 services:
 
   backstage:
+    env_file:
+      - .env
     build: .
+    environment:
+      BACKSTAGE_VERSION: ${BACKSTAGE_VERSION}
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      BACKEND_SECRET: ${BACKEND_SECRET}
     ports:
       - 7007:7007
+      - 7008:7008
     volumes:
-      - ./app-config.yaml:/app/app-config.yaml
-      - ./catalog-info.yaml:/app/catalog-info.yaml
+      - ./backstage:/app
+      - ./app-config.yaml:/app/app-config.yaml:ro
+      - /var/run/docker.sock:/var/run/docker.sock
 
   postgres:
     image: postgres:12
+    env_file:
+      - .env
     environment:
-      POSTGRES_USER: backstage
-      POSTGRES_PASSWORD: backstage 
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} 
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - backstage_pgdata:/var/lib/postgresql/data
 
