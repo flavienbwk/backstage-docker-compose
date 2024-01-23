@@ -41,7 +41,7 @@ Properly dockerized [Backstage](https://github.com/backstage/backstage) configur
 
 2. Initialize Backstage
 
-    :warning: DON'T do it if you've previously did it.
+    :warning: Run these commands only if NOT run in the "development" step
 
     ```bash
     docker-compose -f init.docker-compose.yml down
