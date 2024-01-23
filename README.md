@@ -1,8 +1,8 @@
 # backstage-docker-compose
 
-Dockerized backstage configuration for production use.
+Properly dockerized [Backstage](https://github.com/backstage/backstage) configuration for development and production use.
 
-## Setup
+## Development mode
 
 1. Copy and edit the `.env` file
 
@@ -34,4 +34,6 @@ Dockerized backstage configuration for production use.
     docker-compose up --build
     ```
 
-5. Access backstage at _http://localhost:3000_
+    You can now use the following command to start Backstage
+
+5. Access backstage at _http://172.17.0.1:7008_
