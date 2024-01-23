@@ -13,7 +13,7 @@ Properly dockerized [Backstage](https://github.com/backstage/backstage) configur
     cp .env.example .env
     ```
 
-2. Initialize Backstage
+2. Initialize Backstage (to be run only once!)
 
     ```bash
     docker-compose -f init.docker-compose.yml down
@@ -39,19 +39,17 @@ Properly dockerized [Backstage](https://github.com/backstage/backstage) configur
     cp .env.example .env
     ```
 
-2. Initialize Backstage
-
-    :warning: Run these commands only if NOT run in the "development" step
+2. Initialize Backstage (to be run only once!)
 
     ```bash
     docker-compose -f init.docker-compose.yml down
     docker-compose -f init.docker-compose.yml up --build
     ```
 
-3. Configure SSL certificate for NGINX
+3. Generate SSL certificates
 
     ```bash
-    openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout ./nginx/ssl/backstage.key -out ./nginx/ssl/backstage.crt
+    openssl req -x509 -nodes -days 365 -newkey rsa:4096 -keyout ./nginx/ssl/nginx.key -out ./nginx/ssl/nginx.crt
     ```
 
 4. Run Backstage
@@ -63,7 +61,7 @@ Properly dockerized [Backstage](https://github.com/backstage/backstage) configur
 
     You can now use the following command to start Backstage
 
-5. Access backstage at _http://172.17.0.1:7008_
+5. Access backstage at _https://172.17.0.1:7008_
 
 ## Learn more
 
