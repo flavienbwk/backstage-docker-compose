@@ -9,7 +9,7 @@ RUN apk update && \
 # Install musl
 RUN apk add --no-cache musl-dev libc-dev
 
-RUN npm install -ug npm@10.3.0
+RUN npm install -g yarn@1.22.21
 
 COPY ./init.exp /init.exp
 RUN chmod +x /init.exp
