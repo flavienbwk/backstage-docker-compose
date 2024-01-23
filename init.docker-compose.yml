@@ -2,12 +2,12 @@ version: '3'
 
 services:
 
-  backstage_build:
+  init:
     env_file:
       - .env
     build:
       context: .
-      dockerfile: build.Dockerfile
+      dockerfile: init.Dockerfile
     volumes:
       - ./backstage:/app
       - /var/run/docker.sock:/var/run/docker.sock

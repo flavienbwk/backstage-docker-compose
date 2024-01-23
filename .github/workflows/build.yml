@@ -1,4 +1,4 @@
-name: Docker Compose Build Check
+name: Build Check
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: Docker Compose Init Check
+name: Init Check
 
 on:
   push:
