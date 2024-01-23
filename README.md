@@ -1,5 +1,8 @@
 # backstage-docker-compose
 
+[![Init Check](https://github.com/flavienbwk/backstage-docker-compose/actions/workflows/init.yml/badge.svg)](https://github.com/flavienbwk/backstage-docker-compose/actions/workflows/init.yml)
+[![Build Check](https://github.com/flavienbwk/backstage-docker-compose/actions/workflows/build.yml/badge.svg)](https://github.com/flavienbwk/backstage-docker-compose/actions/workflows/build.yml)
+
 Properly dockerized [Backstage](https://github.com/backstage/backstage) configuration for development and production use.
 
 ## Development mode
