@@ -1,0 +1,22 @@
+name: Docker Compose Init Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Build docker-compose
+      run: |
+        cp .env.example .env
+        docker-compose -f init.docker-compose.yml down
+        docker-compose -f init.docker-compose.yml up --build
