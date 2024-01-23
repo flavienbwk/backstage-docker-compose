@@ -1,0 +1,14 @@
+name: Docker Compose Build Check
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Build docker-compose
+      run: |
+        docker-compose -f docker-compose.yml build
