@@ -2,3 +2,8 @@
 
 backstage/*
 !backstage/exp.exp
+
+logs/*
+
+nginx/ssl/*
+!nginx/ssl/.gitkeep

@@ -2,24 +2,32 @@ version: '3'
 
 services:
 
+  nginx:
+    build: ./nginx
+    restart: always
+    ports:
+      - "7007:443"
+    volumes:
+      - ./nginx/proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - ./logs/nginx:/var/log/nginx
+    depends_on:
+      - backstage
+
   backstage:
     env_file:
       - .env
-    build: .
+    build:
+      context: .
+      dockerfile: prod.Dockerfile
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
       BACKEND_SECRET: ${BACKEND_SECRET}
-    ports:
-      - 7007:7007
-      - 7008:7008
-    volumes:
-      - ./backstage:/app
-      - ./app-config.yaml:/app/app-config.yaml:ro
-      - ./catalog-info.yaml:/app/catalog-info.yaml:ro
-      - ./lerna.json:/app/lerna.json:ro
+    depends_on:
+      - postgres
 
   postgres:
     image: postgres:12

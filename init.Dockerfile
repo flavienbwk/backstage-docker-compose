@@ -9,8 +9,10 @@ RUN apk update && \
 # Install musl
 RUN apk add --no-cache musl-dev libc-dev
 
+RUN npm install -ug npm@10.3.0 && \
+    npm install -ug yarn@1.22.21
+
 COPY ./build.exp /build.exp
 RUN chmod +x /build.exp
 
-COPY ./build.entrypoint.sh /entrypoint.sh
-ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT [ "/build.exp" ]
